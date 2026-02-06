@@ -1,198 +1,198 @@
 /**
- * Console Log Examples Script
- * 
- * A simple demonstration of various console methods and browser APIs
- * 
+ * Ejemplos de registro en consola
+ *
+ * Demostración simple de varios métodos de consola y APIs del navegador
+ *
  * @author Allan Morales
  * @author GitHub Copilot (AI pair programming)
  * @version 1.0.0
  * @date 2026-02-02
  */
 
-// Simple console script with messages
-console.log("Hello, World!");
-console.log("This is a simple console script");
-console.log("Welcome to the console app");
+// Script simple de consola con mensajes
+console.log("¡Hola, Mundo!");
+console.log("Este es un script de consola sencillo");
+console.log("Bienvenido a la aplicación de consola");
 
-// You can also log variables
-let name = "JavaScript";
+// También puedes registrar variables
+let nombre = "JavaScript";
 const version = "ES6+";
-console.warn("'name' is deprecated.");
-console.log(`Learning ${name} - ${version}`);
+console.warn("'nombre' está obsoleto.");
+console.log(`Aprendiendo ${nombre} - ${version}`);
 
-// Log numbers and calculations
+// Números y cálculos
 console.log("2 + 3 =", 2 + 3);
-console.log("Hello".length, "characters");
+console.log("Hola".length, "caracteres");
 
-// Log objects and arrays
-console.log({ message: "This is an object", active: true });
-console.log(["apple", "banana", "orange"]);
+// Objetos y arreglos
+console.log({ mensaje: "Este es un objeto", activo: true });
+console.log(["manzana", "banana", "naranja"]);
 
-// Console error example
-console.error("An error occurred!");
-console.error("Error code:", 404);
+// Ejemplo de error en consola
+console.error("¡Ocurrió un error!");
+console.error("Código de error:", 404);
 
-// Console table example
-const users = [
-  { id: 1, name: "Alice", age: 25 },
-  { id: 2, name: "Bob", age: 30 },
-  { id: 3, name: "Charlie", age: 28 }
+// Ejemplo de tabla en consola
+const usuarios = [
+  { id: 1, nombre: "Alicia", edad: 25 },
+  { id: 2, nombre: "Roberto", edad: 30 },
+  { id: 3, nombre: "Carlos", edad: 28 }
 ];
-console.table(users);
+console.table(usuarios);
 
-// Prompt example (uncomment to use in browser)
-const userInput = prompt("Enter your name:");
-console.log("User entered:", userInput);
+// Ejemplo de prompt (descomentar para usar en navegador)
+const entradaUsuario = prompt("Ingresa tu nombre:");
+console.log("Usuario ingresó:", entradaUsuario);
 
-// Alert example (uncomment to use in browser)
-alert("This is an alert message!");
+// Ejemplo de alerta (descomentar para usar en navegador)
+alert("¡Este es un mensaje de alerta!");
 
-// Final message
-console.log("Script execution complete!");
+// Mensaje final
+console.log("¡Ejecución del script completa!");
 
-//User input value assignation example
+// Ejemplo de asignación de valores desde entrada de usuario
 /** @type {string} */
-let numberValue1;
+let valorNumero1;
 /** @type {string} */
-let numberValue2;
+let valorNumero2;
 
-// Division with error handling for division by zero
-const num1 = parseInt(numberValue1);
-const num2 = parseInt(numberValue2);
+// Conversión a enteros (manejo de división por cero más abajo)
+const numero1 = parseInt(valorNumero1);
+const numero2 = parseInt(valorNumero2);
 
-// Switch block for operation selection
-const operation = prompt("Select operation: 'add', 'subtract', 'multiply', 'divide':");
+// Bloque switch para selección de operación
+const operacion = prompt("Seleccione operación: 'sumar', 'restar', 'multiplicar', 'dividir':");
 
-switch (operation) {
-  case "add":
-    console.log(`Result: ${num1} + ${num2} = ${num1 + num2}`);
+switch (operacion) {
+  case "sumar":
+    console.log(`Resultado: ${numero1} + ${numero2} = ${numero1 + numero2}`);
     break;
-  case "subtract":
-    console.log(`Result: ${num1} - ${num2} = ${num1 - num2}`);
+  case "restar":
+    console.log(`Resultado: ${numero1} - ${numero2} = ${numero1 - numero2}`);
     break;
-  case "multiply":
-    console.log(`Result: ${num1} × ${num2} = ${num1 * num2}`);
+  case "multiplicar":
+    console.log(`Resultado: ${numero1} × ${numero2} = ${numero1 * numero2}`);
     break;
-  case "divide":
-    if (num2 !== 0) {
-      console.log(`Result: ${num1} ÷ ${num2} = ${num1 / num2}`);
+  case "dividir":
+    if (numero2 !== 0) {
+      console.log(`Resultado: ${numero1} ÷ ${numero2} = ${numero1 / numero2}`);
     } else {
-      console.error("Cannot divide by zero!");
+      console.error("¡No se puede dividir por cero!");
     }
     break;
   default:
-    console.warn("Invalid operation selected!");
+    console.warn("¡Operación inválida seleccionada!");
 }
 
-// Array and loops examples
-const arr = ["apple", "banana", "orange"];
+// Ejemplos de arreglos y bucles
+const arreglo = ["manzana", "banana", "naranja"];
 
-console.log("for block");
-for (let i = 0; i < arr.length; i++) {
-    console.log(`Item ${i}: ${arr[i]}`);
+console.log("bloque for");
+for (let indice = 0; indice < arreglo.length; indice++) {
+    console.log(`Elemento ${indice}: ${arreglo[indice]}`);
 }
-console.log("for loop completed\n");
+console.log("bucle for completado\n");
 
-console.log("for-of loop");
-for (const item of arr) {
-    console.log(item);
+console.log("bucle for-of");
+for (const elemento of arreglo) {
+    console.log(elemento);
 }
-console.log("for-of loop completed\n");
+console.log("bucle for-of completado\n");
 
-console.log("for-in loop");
-for (const index in arr) {
-    console.log(`Index ${index}: ${arr[index]}`);
+console.log("bucle for-in");
+for (const indiceIn in arreglo) {
+    console.log(`Índice ${indiceIn}: ${arreglo[indiceIn]}`);
 }
-console.log("for-in loop completed\n");
+console.log("bucle for-in completado\n");
 
-console.log("while loop");
-let i = 0;
-while (i < arr.length) {
-    console.log(`Item ${i}: ${arr[i]}`);
-    i++;
+console.log("bucle while");
+let indiceWhile = 0;
+while (indiceWhile < arreglo.length) {
+    console.log(`Elemento ${indiceWhile}: ${arreglo[indiceWhile]}`);
+    indiceWhile++;
 }
-console.log("while loop completed\n");
+console.log("bucle while completado\n");
 
-console.log("do-while loop");
-let j = 0;
+console.log("bucle do-while");
+let contadorDoWhile = 0;
 do {
-    console.log(`Item ${j}: ${arr[j]}`);
-    j++;
-}while (j < arr.length);
-console.log("do-while loop completed\n");
+    console.log(`Elemento ${contadorDoWhile}: ${arreglo[contadorDoWhile]}`);
+    contadorDoWhile++;
+}while (contadorDoWhile < arreglo.length);
+console.log("bucle do-while completado\n");
 
-// Array filter example
-console.log("Array filter example");
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// Ejemplo de filtrado de arreglos
+console.log("Ejemplo de filtrado de arreglos");
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// Filter for even numbers
-const evenNumbers = numbers.filter((num) => num % 2 === 0);
-console.log("Even numbers:", evenNumbers);
+// Filtrar números pares
+const numerosPares = numeros.filter((num) => num % 2 === 0);
+console.log("Números pares:", numerosPares);
 
-// Filter for numbers greater than 5
-const greaterThanFive = numbers.filter((num) => num > 5);
-console.log("Numbers greater than 5:", greaterThanFive);
+// Filtrar números mayores que 5
+const mayoresQueCinco = numeros.filter((num) => num > 5);
+console.log("Números mayores que 5:", mayoresQueCinco);
 
-// Filter for fruit names with length > 5
-const fruits = ["apple", "banana", "orange", "kiwi", "mango"];
-const longFruitNames = fruits.filter((fruit) => fruit.length > 5);
-console.log("Fruits with name length > 5:", longFruitNames);
-console.log("Array filter example completed\n");
+// Filtrar nombres de frutas con longitud > 5
+const frutas = ["manzana", "banana", "naranja", "kiwi", "mango"];
+const nombresFrutasLargos = frutas.filter((fruta) => fruta.length > 5);
+console.log("Frutas con nombre de longitud > 5:", nombresFrutasLargos);
+console.log("Ejemplo de filtrado de arreglos completado\n");
 
-// functions example
-function sum(a, b) {
+// Ejemplos de funciones
+function sumar(a, b) {
   return a + b;
 }
-console.log("Sum of 5 and 3:", sum(5, 3));
+console.log("Suma de 5 y 3:", sumar(5, 3));
 
-const difference = function(a, b) {
+const restar = function(a, b) {
     return a - b;
 }
-console.log("Difference of 5 and 3:", difference(5, 3));
+console.log("Resta de 5 y 3:", restar(5, 3));
 
-const product = (a, b) => a * b;
-console.log("Product of 5 and 3:", product(5, 3));
+const multiplicar = (a, b) => a * b;
+console.log("Producto de 5 y 3:", multiplicar(5, 3));
 
-const divide = (a, b) => {
+const dividir = (a, b) => {
   if (b === 0) {
-    console.error("Cannot divide by zero!");
+    console.error("¡No se puede dividir por cero!");
     return null;
   }
   return a / b;
 };
-console.log("Division of 5 and 3:", divide(5, 3));
+console.log("División de 5 y 3:", dividir(5, 3));
 
-const codeInfo = {
-    authors: [
+const infoCodigo = {
+    autores: [
         {
-            name: "Allan",
-            role: "Front-end Developer"
+            nombre: "Allan",
+            rol: "Desarrollador Front-end"
         },
         {
-            name: "GitHub Copilot",
-            role: "AI Assistant"
+            nombre: "GitHub Copilot",
+            rol: "Asistente IA"
         }
     ],
     version: "1.0",
-    description: "A simple JavaScript console application"
+    descripcion: "Una aplicación de consola JavaScript sencilla"
 }
 
-// forEach example with codeInfo
-console.log("forEach example with codeInfo");
-codeInfo.authors.forEach((author, index) => {
-    console.log(`Author ${index + 1}: ${author.name} - ${author.role}`);
+// Ejemplo forEach con infoCodigo
+console.log("Ejemplo forEach con infoCodigo");
+infoCodigo.autores.forEach((autor, indiceAutor) => {
+    console.log(`Autor ${indiceAutor + 1}: ${autor.nombre} - ${autor.rol}`);
 });
-console.log("forEach example completed\n");
+console.log("Ejemplo forEach completado\n");
 
-// map example with codeInfo
-console.log("map example with codeInfo");
-const authorNames = codeInfo.authors.map((author) => author.name);
-console.log("Author names:", authorNames);
+// Ejemplo map con infoCodigo
+console.log("Ejemplo map con infoCodigo");
+const nombresAutores = infoCodigo.autores.map((autor) => autor.nombre);
+console.log("Nombres de autores:", nombresAutores);
 
-const authorRoles = codeInfo.authors.map((author) => ({
-    name: author.name,
-    role: author.role.toUpperCase()
+const rolesAutores = infoCodigo.autores.map((autor) => ({
+    nombre: autor.nombre,
+    rol: autor.rol.toUpperCase()
 }));
-console.log("Author roles (uppercase):");
-console.table(authorRoles);
-console.log("map example completed\n");
+console.log("Roles de autores (mayúsculas):");
+console.table(rolesAutores);
+console.log("Ejemplo map completado\n");
