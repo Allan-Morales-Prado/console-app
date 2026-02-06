@@ -1,11 +1,18 @@
 /**
  * Ejemplos de registro en consola
  *
- * Demostración simple de varios métodos de consola y APIs del navegador
- *
  * @author Allan Morales
  * @version 1.0.0
  * @date 2026-02-06
+ */
+
+/**
+ * Documentación breve:
+ * - El programa muestra un menú por prompt y se repite hasta que el usuario elige "0".
+ * - Cada operación matemática solicita dos números usando pedirNumero(), que valida cancelación,
+ *   entrada vacía y valores no numéricos.
+ * - Los resultados se guardan en el arreglo historial como objetos { tipo, operacion, resultado }.
+ * - El historial puede consultarse (opción 5) o borrarse (opción 6) usando length = 0.
  */
 
 alert("¡Hola! Bienvenido al programa de consola de JavaScript 😄");
@@ -45,6 +52,39 @@ do {
 } while (opcion !== "0");
 
 /**
+ * 
+ * @param {string} ordinal - ordinal del número a pedir (ej. "primer", "segundo")
+ * @returns {number|null} - número ingresado por el usuario o null si canceló
+ */
+function pedirNumero(ordinal) {
+    while (true) {
+        const input = prompt("Ingresa el " + ordinal + " número:");
+        if (input === null) return null; // usuario canceló
+
+        if (input.trim() === "") {
+            alert("Entrada vacía. Debes ingresar un número.");
+            continue;
+        }
+
+        const n = Number(input);
+        if (!Number.isNaN(n)) return n;
+
+        alert("Entrada inválida. Debes ingresar un número.");
+    }
+}
+
+/**
+ * Función para registrar la operación en el historial
+ * @param {string} operacion - operación ingresada por el usuario
+ * @param {number} resultado - resultado numérico de la operación
+ * @param {string} tipo - tipo de operación (ej. "suma", "resta", etc.)
+ */
+function registrarOperacion(operacion, resultado, tipo) {
+    historial.push({ tipo, operacion, resultado });
+    console.log(++contadorRegistro + ": operación " + tipo + " registrada en historial");
+}
+
+/**
  * Función para mostrar el historial de operaciones
  */
 function mostrarHistorial() {
@@ -53,8 +93,8 @@ function mostrarHistorial() {
         console.log(++contadorRegistro + ": Consulta de historial: No hay operaciones registradas.");
     } else {
         let mensaje = "Historial de operaciones:\n";
-        historial.forEach((operacion, index) => {
-            mensaje += `${index + 1}. ${operacion.operacion} = ${operacion.resultado}\n`;
+        historial.forEach((registro, index) => {
+            mensaje += `${index + 1}. [${registro.tipo}] ${registro.operacion} = ${registro.resultado}\n`;
         });
         alert(mensaje);
         console.log(++contadorRegistro + ": Consulta de historial completada. Se registraron " + historial.length + " operaciones.");
@@ -63,7 +103,7 @@ function mostrarHistorial() {
 
 /**
  * Función para borrar el historial de operaciones
- * @param {object[]} arreglo - historial de operaciones matemáticas
+ * @param {{tipo:string, operacion:string, resultado:number}[]} arreglo - historial de operaciones matemáticas
  */
 function borrarHistorial(arreglo) {
     if (confirm("¿Estás seguro de que quieres borrar el historial?")) {
@@ -77,82 +117,70 @@ function borrarHistorial(arreglo) {
  * Función para sumar dos números
  */
 function sumar() {
-    let num1 = parseFloat(prompt("Ingresa el primer número:"));
+    const num1 = pedirNumero("primer");
+    if (num1 === null) return;
     console.log(++contadorRegistro + ": sumando " + num1);
 
-    let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+    const num2 = pedirNumero("segundo");
+    if (num2 === null) return;
     console.log(++contadorRegistro + ": sumando " + num2);
 
-    alert(`Operación ingresada: ${num1} + ${num2}\n Resultado: ${num1 + num2}`);
-    console.log(++contadorRegistro + ": resultado de la operación suma: " + (num1 + num2));
-    historial.push(
-        {
-            operacion: `${num1} + ${num2}`,
-            resultado: num1 + num2
-        }
-    );
-    console.log(++contadorRegistro + ": operación suma registrada en historial");
+    const resultado = num1 + num2;
+    registrarOperacion(`${num1} + ${num2}`, resultado, "suma");
+    alert(`Operación: ${num1} + ${num2}\nResultado: ${resultado}`);
 }
 
 /**
  * Función para restar dos números
  */
 function restar() {
-    let num1 = parseFloat(prompt("Ingresa el primer número:"));
-    console.log(++contadorRegistro + ": restando " + num1);
-    let num2 = parseFloat(prompt("Ingresa el segundo número:"));
-    console.log(++contadorRegistro + ": restando " + num2);
-    alert(`Operación ingresada: ${num1} - ${num2}\n Resultado: ${num1 - num2}`);
-    console.log(++contadorRegistro + ": resultado de la operación resta: " + (num1 - num2));
-    historial.push(
-        {
-            operacion: `${num1} - ${num2}`,
-            resultado: num1 - num2
-        }
-    );
-    console.log(++contadorRegistro + ": operación resta registrada en historial");
+    const num1 = pedirNumero("primer");
+    if (num1 === null) return;
+    console.log(++contadorRegistro + ": minuendo " + num1);
+
+    const num2 = pedirNumero("segundo");
+    if (num2 === null) return;
+    console.log(++contadorRegistro + ": sustraendo " + num2);
+
+    const resultado = num1 - num2;
+    registrarOperacion(`${num1} - ${num2}`, resultado, "resta");
+    alert(`Operación: ${num1} - ${num2}\nResultado: ${resultado}`);
 }
 
 /**
  * Función para multiplicar dos números
  */
 function multiplicar() {
-    let num1 = parseFloat(prompt("Ingresa el primer número:"));
-    console.log(++contadorRegistro + ": multiplicando " + num1);
-    let num2 = parseFloat(prompt("Ingresa el segundo número:"));
-    console.log(++contadorRegistro + ": multiplicando " + num2);
-    alert(`Operación ingresada: ${num1} * ${num2}\n Resultado: ${num1 * num2}`);
-    console.log(++contadorRegistro + ": resultado de la operación multiplicación: " + (num1 * num2));
-    historial.push(
-        {
-            operacion: `${num1} * ${num2}`,
-            resultado: num1 * num2
-        }
-    );
-    console.log(++contadorRegistro + ": operación multiplicación registrada en historial");
+    const num1 = pedirNumero("primer");
+    if (num1 === null) return;
+    console.log(++contadorRegistro + ": factor " + num1);
+
+    const num2 = pedirNumero("segundo");
+    if (num2 === null) return;
+    console.log(++contadorRegistro + ": factor " + num2);
+
+    const resultado = num1 * num2;
+    registrarOperacion(`${num1} * ${num2}`, resultado, "multiplicación");
+    alert(`Operación: ${num1} * ${num2}\nResultado: ${resultado}`);
 }
 
 /**
  * Función para dividir dos números
  */
 function dividir() {
-    let num1 = parseFloat(prompt("Ingresa el primer número:"));
-    console.log(++contadorRegistro + ": dividiendo " + num1);
-    let num2 = parseFloat(prompt("Ingresa el segundo número:"));
-    console.log(++contadorRegistro + ": dividiendo " + num2);
-    if (num2 !== 0) {
-        alert(`Operación ingresada: ${num1} / ${num2}\n Resultado: ${num1 / num2}`);
-        console.log(++contadorRegistro + ": resultado de la operación división: " + (num1 / num2));
-        historial.push(
-            {
-                operacion: `${num1} / ${num2}`,
-                resultado: num1 / num2
-            }
+    const num1 = pedirNumero("primer");
+    if (num1 === null) return;
+    console.log(++contadorRegistro + ": dividendo " + num1);
 
-        );
-        console.log(++contadorRegistro + ": operación división registrada en historial");
+    const num2 = pedirNumero("segundo");
+    if (num2 === null) return;
+    console.log(++contadorRegistro + ": divisor " + num2);
+    if (num2 !== 0) {
+        const resultado = num1 / num2;
+        registrarOperacion(`${num1} / ${num2}`, resultado, "división");
+        alert(`Operación: ${num1} / ${num2}\nResultado: ${resultado}`);
     } else {
         alert("Error: No se puede dividir entre cero.");
-        console.log(++contadorRegistro + ": error al dividir entre cero");
+        console.error(++contadorRegistro + ": error al dividir entre cero");
     }
 }
