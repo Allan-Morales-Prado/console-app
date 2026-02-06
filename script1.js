@@ -17,7 +17,7 @@ console.log("Bienvenido a la aplicación de consola");
 // También puedes registrar variables
 let nombre = "JavaScript";
 const version = "ES6+";
-console.warn("'nombre' está obsoleto.");
+console.warn("Mensaje de ADVERTENCIA sin contexto");
 console.log(`Aprendiendo ${nombre} - ${version}`);
 
 // Números y cálculos
@@ -51,10 +51,10 @@ alert("¡Este es un mensaje de alerta!");
 console.log("¡Ejecución del script completa!");
 
 // Ejemplo de asignación de valores desde entrada de usuario
-/** @type {string} */
-let valorNumero1;
-/** @type {string} */
-let valorNumero2;
+/** @type {number} */
+let valorNumero1 = prompt("Ingresa el primer número:");
+/** @type {number} */
+let valorNumero2 = prompt("Ingresa el segundo número:");
 
 // Conversión a enteros (manejo de división por cero más abajo)
 const numero1 = parseInt(valorNumero1);
